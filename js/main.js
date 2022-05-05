@@ -1,50 +1,60 @@
-var VideoGame = (function () {
-    function VideoGame() {
+var VHSTape = (function () {
+    function VHSTape() {
     }
-    return VideoGame;
+    return VHSTape;
 }());
 window.onload = function () {
     var addBtn = document.querySelector("input[type=button]");
-    addBtn.onclick = addVideoGame;
+    addBtn.onclick = addVHSTape;
 };
 function getById(id) {
     return document.getElementById(id);
 }
-function addVideoGame() {
-    if (isAllDataValid()) {
-        var game = getVideoGame();
-        displayGame(game);
+function addVHSTape() {
+    if (isAllDataValid(myVHS)) {
+        var VHS = getVHSTape();
+        displayVHS(VHS);
     }
 }
-function getVideoGame() {
-    var game = new VideoGame();
+function getVHSTape() {
+    var VHS = new VHSTape();
     var titleInput = getById("title");
-    game.title = titleInput.value;
+    VHS.title = titleInput.value;
     var priceInput = getById("price");
-    game.price = parseFloat(priceInput.value);
+    VHS.price = parseFloat(priceInput.value);
     var ratingInput = getById("rating");
-    game.rating = ratingInput.value;
+    VHS.rating = ratingInput.value;
     var digitalOnly = getById("online");
-    game.isDigitalOnly = digitalOnly.checked;
-    console.log(game);
-    return game;
+    VHS.isCollectorsOnly = digitalOnly.checked;
+    console.log(VHS);
+    return VHS;
 }
-function displayGame(myGame) {
+function displayVHS(myVHS) {
     var displayDiv = getById("display");
-    var gameHeading = document.createElement("h2");
-    gameHeading.innerText = myGame.title;
-    var gameInfo = document.createElement("p");
-    var notDigitalDisplay = "";
-    if (myGame.isDigitalOnly) {
-        notDigitalDisplay = "This is a digital only game ";
+    var VHSHeading = document.createElement("h2");
+    VHSHeading.innerText = myVHS.title;
+    var VHSInfo = document.createElement("p");
+    var notCollectorsOnly = "";
+    if (myVHS.isCollectorsOnly) {
+        notCollectorsOnly = "This is a collector's edition VHS Tape! ";
     }
     else {
-        notDigitalDisplay = "You can buy a physical copy! ";
+        notCollectorsOnly = "You can buy a copy of this for an affordable price! ";
     }
-    gameInfo.innerText = "".concat(myGame.title, " has a rating of \n        ").concat(myGame.rating, ". It costs $").concat(myGame.price.toFixed(2), ". It is \n        ").concat(notDigitalDisplay);
-    displayDiv.appendChild(gameHeading);
-    displayDiv.appendChild(gameInfo);
+    VHSInfo.innerText = "".concat(myVHS.title, " has a rating of \n        ").concat(myVHS.rating, ". It costs $").concat(myVHS.price.toFixed(2), ". \n        ").concat(notCollectorsOnly);
+    displayDiv.appendChild(VHSHeading);
+    displayDiv.appendChild(VHSInfo);
 }
-function isAllDataValid() {
-    return true;
+function isAllDataValid(myVHS) {
+    var titleInput = document.getElementById("Input");
+    var priceInput = document.getElementById("Input");
+    if (myVHS(titleInput).equals("")) {
+        myVHS("Error! Please input a Title for VHS!");
+    }
+    if (myVHS.getText(priceInput).equals("")) {
+        myVHS.setText("Error! Please input a Price!");
+    }
+    else if (myVHS.getText(priceInput).equals(NaN)) {
+        myVHS.setText("Error! Please input a Price!");
+    }
 }

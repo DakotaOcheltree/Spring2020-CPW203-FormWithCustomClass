@@ -1,8 +1,8 @@
-class VideoGame{
+class VHSTape{
     title:string;
     price:number;
     rating:string;
-    isDigitalOnly:boolean;
+    isCollectorsOnly:boolean;
 }
 /*
 //test code
@@ -15,77 +15,93 @@ myGame.isDigitalOnly = true;
 window.onload = function(){
     let addBtn = 
     <HTMLElement>document.querySelector("input[type=button]");
-    addBtn.onclick = addVideoGame;
+    addBtn.onclick = addVHSTape;
 }
 
 function getById(id:string){
     return document.getElementById(id);
 }
 
-function addVideoGame(){
+function addVHSTape(){
 
-        if(isAllDataValid()){
-            let game = getVideoGame();
-            displayGame(game);
+        if(isAllDataValid(myVHS)){
+            let VHS = getVHSTape();
+            displayVHS(VHS);
         }
 }
-function getVideoGame():VideoGame{
-    let game = new VideoGame();
+function getVHSTape():VHSTape{
+    let VHS = new VHSTape();
     //TODO:Populate with data from teh form
     let titleInput = <HTMLInputElement>getById("title");
-    game.title = titleInput.value;
+    VHS.title = titleInput.value;
 
     let priceInput = <HTMLInputElement>getById("price");
-    game.price = parseFloat(priceInput.value);
+    VHS.price = parseFloat(priceInput.value);
     //TODO:return game
 
     let ratingInput = <HTMLSelectElement>getById("rating");
-    game.rating = ratingInput.value;
+    VHS.rating = ratingInput.value;
 
     let digitalOnly = <HTMLInputElement>getById("online");
-    game.isDigitalOnly = digitalOnly.checked;
+    VHS.isCollectorsOnly = digitalOnly.checked;
     /*if(isDigitalOnly.checked){
         game.isDigitalOnly = true;
     }
     else{
         game.isDigitalOnly = false;
     }*/
-    console.log(game);
-    return game;
+    console.log(VHS);
+    return VHS;
 }
 
-function displayGame(myGame:VideoGame):void{
+function displayVHS(myVHS:VHSTape):void{
     let displayDiv = getById("display");
 
     //Create <h2> with game title
-    let gameHeading = document.createElement("h2");
-    gameHeading.innerText = myGame.title;
+    let VHSHeading = document.createElement("h2");
+    VHSHeading.innerText = myVHS.title;
 
     //Create paragraph with game details
-    let gameInfo = document.createElement("p");
-    let notDigitalDisplay = "";
-    if(myGame.isDigitalOnly){
-        notDigitalDisplay = "This is a digital only game "
+    let VHSInfo = document.createElement("p");
+    let notCollectorsOnly = "";
+    if(myVHS.isCollectorsOnly){
+        notCollectorsOnly = "This is a collector's edition VHS Tape! "
     
     }
     else{
-        notDigitalDisplay = "You can buy a physical copy! "
+        notCollectorsOnly = "You can buy a copy of this for an affordable price! "
     }
     /*gameInfo.innerText = myGame.title + "has a rating of " +      <-same thing, different way
                     myGame.rating + ". It costs " + myGame.price
                     + ". It is " + notDigitalDisplay +  "digital only";
     */                
-    gameInfo.innerText = `${myGame.title} has a rating of 
-        ${myGame.rating}. It costs $${myGame.price.toFixed(2)}. It is 
-        ${notDigitalDisplay}`;
+    VHSInfo.innerText = `${myVHS.title} has a rating of 
+        ${myVHS.rating}. It costs $${myVHS.price.toFixed(2)}. 
+        ${notCollectorsOnly}`;
 
     //Add <h2> in the <div id="display">
-    displayDiv.appendChild(gameHeading);
+    displayDiv.appendChild(VHSHeading);
     //Add <p> game info
-    displayDiv.appendChild(gameInfo);
+    displayDiv.appendChild(VHSInfo);
 }
 
 //ADD VALIDATION CODE
-function isAllDataValid(){
-    return true;
+function isAllDataValid(myVHS){
+    let titleInput = document.getElementById("Input");
+    let priceInput = document.getElementById("Input");
+    if (myVHS(titleInput).equals("")) {
+        myVHS("Error! Please input a Title for VHS!");
+    }
+    if (myVHS.getText(priceInput).equals("")) {
+        myVHS.setText("Error! Please input a Price!");
+    }
+    else if(myVHS.getText(priceInput).equals(NaN)) {
+        myVHS.setText("Error! Please input a Price!");
+
+    }
+    
+
 }
+
+
+

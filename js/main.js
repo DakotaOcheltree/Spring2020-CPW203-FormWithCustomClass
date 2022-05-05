@@ -11,7 +11,7 @@ function getById(id) {
     return document.getElementById(id);
 }
 function addVHSTape() {
-    if (isAllDataValid(myVHS)) {
+    if (isAllDataValid()) {
         var VHS = getVHSTape();
         displayVHS(VHS);
     }
@@ -45,16 +45,6 @@ function displayVHS(myVHS) {
     displayDiv.appendChild(VHSHeading);
     displayDiv.appendChild(VHSInfo);
 }
-function isAllDataValid(myVHS) {
-    var titleInput = document.getElementById("Input");
-    var priceInput = document.getElementById("Input");
-    if (myVHS(titleInput).equals("")) {
-        myVHS("Error! Please input a Title for VHS!");
-    }
-    if (myVHS.getText(priceInput).equals("")) {
-        myVHS.setText("Error! Please input a Price!");
-    }
-    else if (myVHS.getText(priceInput).equals(NaN)) {
-        myVHS.setText("Error! Please input a Price!");
-    }
+function isAllDataValid() {
+    return true;
 }

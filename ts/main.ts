@@ -24,7 +24,7 @@ function getById(id:string){
 
 function addVHSTape(){
 
-        if(isAllDataValid(myVHS)){
+        if(isAllDataValid(/*myVHS*/)){
             let VHS = getVHSTape();
             displayVHS(VHS);
         }
@@ -86,8 +86,8 @@ function displayVHS(myVHS:VHSTape):void{
 }
 
 //ADD VALIDATION CODE
-function isAllDataValid(myVHS){
-    let titleInput = document.getElementById("Input");
+function isAllDataValid(/*myVHS*/){
+    /*let titleInput = document.getElementById("Input");
     let priceInput = document.getElementById("Input");
     if (myVHS(titleInput).equals("")) {
         myVHS("Error! Please input a Title for VHS!");
@@ -98,8 +98,8 @@ function isAllDataValid(myVHS){
     else if(myVHS.getText(priceInput).equals(NaN)) {
         myVHS.setText("Error! Please input a Price!");
 
-    }
-    
+    }*/
+    return true
 
 }
 

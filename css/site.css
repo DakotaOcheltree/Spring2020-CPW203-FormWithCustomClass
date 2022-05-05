@@ -1,5 +1,5 @@
 input[type = text]{
-    padding: .35em;
+    padding: .5em;
 }
 
 label{
@@ -8,6 +8,10 @@ label{
     text-align: center;
 }
 
-input[type = checkbox], input[type=button]{
-    margin-left:60%;
+input[type = checkbox]{
+    margin-left:50%;
+} 
+input[type=button]{
+    margin-left:50%;
+    
 }

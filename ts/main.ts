@@ -23,8 +23,6 @@ function getById(id:string){
 }
 
 function addVideoGame(){
-    let addBtn =
-        alert("test");
 
         if(isAllDataValid()){
             let game = getVideoGame();
@@ -57,8 +55,34 @@ function getVideoGame():VideoGame{
 }
 
 function displayGame(myGame:VideoGame):void{
-    //TODO: Display videogame below the form
+    let displayDiv = getById("display");
 
+    //Create <h2> with game title
+    let gameHeading = document.createElement("h2");
+    gameHeading.innerText = myGame.title;
+
+    //Create paragraph with game details
+    let gameInfo = document.createElement("p");
+    let notDigitalDisplay = "";
+    if(myGame.isDigitalOnly){
+        notDigitalDisplay = "This is a digital only game "
+    
+    }
+    else{
+        notDigitalDisplay = "You can buy a physical copy! "
+    }
+    /*gameInfo.innerText = myGame.title + "has a rating of " +      <-same thing, different way
+                    myGame.rating + ". It costs " + myGame.price
+                    + ". It is " + notDigitalDisplay +  "digital only";
+    */                
+    gameInfo.innerText = `${myGame.title} has a rating of 
+        ${myGame.rating}. It costs $${myGame.price.toFixed(2)}. It is 
+        ${notDigitalDisplay}`;
+
+    //Add <h2> in the <div id="display">
+    displayDiv.appendChild(gameHeading);
+    //Add <p> game info
+    displayDiv.appendChild(gameInfo);
 }
 
 //ADD VALIDATION CODE

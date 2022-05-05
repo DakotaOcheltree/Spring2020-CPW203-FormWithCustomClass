@@ -1,0 +1,13 @@
+input[type = text]{
+    padding: .35em;
+}
+
+label{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+input[type = checkbox], input[type=button]{
+    margin-left:60%;
+}

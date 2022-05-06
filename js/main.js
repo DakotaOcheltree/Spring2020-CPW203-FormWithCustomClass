@@ -46,5 +46,20 @@ function displayVHS(myVHS) {
     displayDiv.appendChild(VHSInfo);
 }
 function isAllDataValid() {
-    return true;
+    var isValid = true;
+    var titleBox = document.getElementById("title");
+    var title = titleBox.value;
+    if (title == "") {
+        isValid = false;
+        titleBox.nextElementSibling.innerHTML =
+            "Title is Required!";
+    }
+    var priceBox = document.getElementById("price");
+    var price = priceBox.value;
+    if (price == " " || isNaN(parseFloat(price))) {
+        isValid = false;
+        priceBox.nextElementSibling.innerHTML =
+            "Price is required and must be a number!";
+    }
+    return isValid;
 }

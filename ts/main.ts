@@ -86,20 +86,31 @@ function displayVHS(myVHS:VHSTape):void{
 }
 
 //ADD VALIDATION CODE
-function isAllDataValid(/*myVHS*/){
-    /*let titleInput = document.getElementById("Input");
-    let priceInput = document.getElementById("Input");
-    if (myVHS(titleInput).equals("")) {
-        myVHS("Error! Please input a Title for VHS!");
-    }
-    if (myVHS.getText(priceInput).equals("")) {
-        myVHS.setText("Error! Please input a Price!");
-    }
-    else if(myVHS.getText(priceInput).equals(NaN)) {
-        myVHS.setText("Error! Please input a Price!");
+function isAllDataValid():boolean{
+    let isValid = true;
 
-    }*/
-    return true
+    //validate price, display if invalid
+    let titleBox:HTMLInputElement = 
+            <HTMLInputElement>document.getElementById("title");
+    let title:string = titleBox.value;
+    if(title == ""){
+        isValid = false;
+        titleBox.nextElementSibling.innerHTML =
+            "Title is Required!"
+    }    
+
+    
+    //validate price, display if invalid
+    let priceBox:HTMLInputElement = 
+            <HTMLInputElement>document.getElementById("price");
+    let price:string = priceBox.value;
+    if(price == " " || isNaN(parseFloat(price))){
+        isValid = false;
+        priceBox.nextElementSibling.innerHTML =
+            "Price is required and must be a number!"
+    }
+
+    return isValid;
 
 }
 
